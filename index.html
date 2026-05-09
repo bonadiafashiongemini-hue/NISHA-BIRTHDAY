@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Happy Birthday Nisha 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;overflow:hidden;-webkit-tap-highlight-color:transparent;}
+body{font-family:'Hind Siliguri',sans-serif;background:#000;}
+
+/* ── PAGE SYSTEM ── */
+.page{
+  position:fixed;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:16px 16px 70px;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.7s ease,transform 0.7s ease;
+  transform:translateX(60px);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.page.active{opacity:1;pointer-events:all;transform:translateX(0);}
+.page.exit{opacity:0;transform:translateX(-60px);}
+
+/* ── NAV ── */
+.nav{
+  position:fixed;bottom:0;left:0;right:0;height:58px;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  background:rgba(0,0,0,0.35);backdrop-filter:blur(16px);
+  border-top:1px solid rgba(255,255,255,0.1);
+  z-index:999;
+}
+.dot{
+  width:10px;height:10px;border-radius:50%;
+  background:rgba(255,255,255,0.3);border:1.5px solid rgba(255,255,255,0.5);
+  cursor:pointer;transition:all 0.3s;
+}
+.dot.active{background:#FFD700;border-color:#FFD700;transform:scale(1.4);}
+
+/* ── NEXT BTN ── */
+.nxt{
+  display:inline-block;margin-top:18px;
+  background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);
+  border:1.5px solid rgba(255,255,255,0.4);color:#fff;
+  padding:11px 28px;border-radius:50px;font-family:'Hind Siliguri',sans-serif;
+  font-size:15px;font-weight:600;cursor:pointer;transition:all 0.25s;
+}
+.nxt:active{transform:scale(0.96);}
+
+/* ══════════════════════════════════════════
+   PAGE 1 — CAKE
+══════════════════════════════════════════ */
+#p1{background:radial-gradient(ellipse at 60% 30%,#3d0a5f 0%,#1a0533 60%,#0a001a 100%);}
+
+/* stars */
+.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:1}}
+
+.p1title{
+  color:#fff;font-size:22px;font-weight:700;text-align:center;
+  margin-bottom:20px;line-height:1.5;
+  text-shadow:0 0 20px rgba(255,200,255,.5);
+}
+
+/* ── CAKE ── */
+.cake-wrap{position:relative;width:220px;height:200px;margin:0 auto;}
+
+/* plate */
+.plate{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:210px;height:18px;
+  background:linear-gradient(to bottom,#f8d7ea,#e8b4cc);
+  border-radius:50%;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+
+/* layers */
+.layer{position:absolute;left:50%;transform:translateX(-50%);border-radius:12px;overflow:visible;}
+.l1{
+  bottom:14px;width:185px;height:62px;
+  background:linear-gradient(135deg,#ff6ba8,#ff9cc8,#ff6ba8);
+  box-shadow:inset 0 -6px 0 rgba(0,0,0,.12),0 4px 20px rgba(255,107,168,.4);
+}
+.l2{
+  bottom:72px;width:155px;height:52px;
+  background:linear-gradient(135deg,#c84fba,#e070d0,#c84fba);
+  box-shadow:inset 0 -5px 0 rgba(0,0,0,.12),0 4px 16px rgba(200,79,186,.4);
+}
+.l3{
+  bottom:120px;width:120px;height:42px;
+  background:linear-gradient(135deg,#9b59b6,#c39bd3,#9b59b6);
+  box-shadow:inset 0 -4px 0 rgba(0,0,0,.12),0 4px 14px rgba(155,89,182,.4);
+}
+
+/* frosting drip effect */
+.drip-row{
+  position:absolute;top:-9px;left:0;width:100%;
+  display:flex;justify-content:space-evenly;padding:0 8px;
+  pointer-events:none;
+}
+.drip{
+  width:13px;height:14px;
+  background:rgba(255,255,255,.9);
+  border-radius:0 0 50% 50%;
+}
+
+/* cake emoji deco */
+.ldeco{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  display:flex;gap:8px;font-size:16px;
+}
+
+/* ── CANDLES ── */
+.candles-row{
+  position:absolute;
+  bottom:calc(120px + 42px - 4px);
+  left:50%;transform:translateX(-50%);
+  display:flex;gap:22px;
+}
+.candle{display:flex;flex-direction:column;align-items:center;position:relative;}
+
+.flame-wrap{position:relative;width:18px;height:30px;display:flex;justify-content:center;}
+.flame{
+  width:14px;height:26px;
+  background:linear-gradient(to top,#ff2200 0%,#ff6600 30%,#ffcc00 70%,#fff8d0 100%);
+  border-radius:50% 50% 30% 30%;
+  animation:flicker .45s ease-in-out infinite alternate;
+  box-shadow:0 0 10px #ff6600,0 0 22px #ff4400;
+  transform-origin:bottom center;
+  transition:all .4s ease;
+}
+.flame.out{width:0;height:0;opacity:0;box-shadow:none;}
+
+@keyframes flicker{
+  0%{transform:scaleX(1) scaleY(1) rotate(-4deg);}
+  100%{transform:scaleX(.75) scaleY(1.1) rotate(4deg);}
+}
+
+.smoke-line{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:3px;height:0;
+  background:linear-gradient(to top,rgba(180,180,180,.7),transparent);
+  border-radius:2px;opacity:0;
+  transition:height .1s,opacity .1s;
+}
+.smoke-line.puff{
+  animation:smokePuff 1.6s ease-out forwards;
+}
+@keyframes smokePuff{
+  0%{height:0;opacity:.8;transform:translateX(-50%) scaleX(1);}
+  60%{height:35px;opacity:.5;transform:translateX(-50%) scaleX(2);}
+  100%{height:50px;opacity:0;transform:translateX(-52%) scaleX(4);}
+}
+
+.wick{width:2px;height:7px;background:#2c1a00;border-radius:1px;}
+.c-body{width:12px;height:44px;border-radius:4px;}
+.c-base{width:16px;height:6px;border-radius:3px;background:rgba(0,0,0,.15);}
+
+/* BLOW BUTTON */
+.blow-btn{
+  margin-top:22px;
+  background:linear-gradient(135deg,#FFD700,#FFA500);
+  border:none;border-radius:50px;
+  padding:15px 42px;
+  font-family:'Hind Siliguri',sans-serif;font-size:20px;font-weight:700;
+  color:#3d0a5f;cursor:pointer;
+  box-shadow:0 8px 28px rgba(255,180,0,.45);
+  animation:pulsebtn 1.6s ease-in-out infinite;
+}
+@keyframes pulsebtn{
+  0%,100%{transform:scale(1);box-shadow:0 8px 28px rgba(255,180,0,.45);}
+  50%{transform:scale(1.06);box-shadow:0 12px 40px rgba(255,180,0,.65);}
+}
+.blow-btn:disabled{opacity:.45;animation:none;cursor:default;}
+
+.blown-msg{
+  color:#FFD700;font-size:20px;font-weight:700;
+  text-align:center;margin-top:14px;
+  opacity:0;transform:scale(.8);
+  transition:all .7s cubic-bezier(.34,1.56,.64,1);
+}
+.blown-msg.show{opacity:1;transform:scale(1);}
+
+/* ══════════════════════════════════════════
+   PAGE 2 — BENGALI WISHES
+══════════════════════════════════════════ */
+#p2{background:radial-gradient(ellipse at 40% 40%,#2d1b69 0%,#1a1a5e 60%,#0d0d3d 100%);}
+
+/* ══════════════════════════════════════════
+   PAGE 3 — FIRST MEET
+══════════════════════════════════════════ */
+#p3{background:radial-gradient(ellipse at 55% 35%,#1e3a6e 0%,#0f2040 60%,#070d1a 100%);}
+
+/* ══════════════════════════════════════════
+   PAGE 4 — CMA DREAM
+══════════════════════════════════════════ */
+#p4{background:radial-gradient(ellipse at 45% 40%,#1a4d2e 0%,#0a2e18 60%,#040f08 100%);}
+
+/* ══════════════════════════════════════════
+   PAGE 5 — LOVE
+══════════════════════════════════════════ */
+#p5{background:radial-gradient(ellipse at 50% 40%,#7a0f2e 0%,#4a0218 60%,#1a0009 100%);}
+
+/* ── CONTENT CARD ── */
+.card{
+  background:rgba(255,255,255,.09);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:26px;
+  padding:26px 22px;
+  width:100%;max-width:400px;
+  color:#fff;
+  max-height:calc(100vh - 90px);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.card::-webkit-scrollbar{display:none;}
+
+.card-icon{font-size:52px;text-align:center;margin-bottom:10px;line-height:1;}
+.card-title{
+  font-size:24px;font-weight:700;text-align:center;
+  color:#FFD700;margin-bottom:16px;line-height:1.35;
+}
+.card-body{font-size:15px;line-height:1.95;color:rgba(255,255,255,.9);text-align:center;}
+.hl{color:#FFD700;font-weight:700;}
+.big-line{
+  display:block;font-size:19px;font-weight:700;
+  color:#FFD700;margin:10px 0;line-height:1.4;
+}
+
+/* memory box */
+.mem-box{
+  background:rgba(79,195,247,.1);
+  border-left:3px solid #4fc3f7;
+  border-radius:0 12px 12px 0;
+  padding:14px 16px;
+  text-align:left;margin:12px 0;
+  font-size:14px;line-height:1.85;
+}
+
+/* CMA badge */
+.cma-badge{
+  display:block;
+  background:linear-gradient(135deg,#FFD700,#FFA500);
+  color:#0a2e18;font-size:30px;font-weight:700;
+  letter-spacing:4px;padding:12px 0;border-radius:14px;
+  text-align:center;margin:14px 0 6px;
+  box-shadow:0 8px 26px rgba(255,200,0,.35);
+}
+
+/* dream list */
+.dream-list{
+  background:rgba(255,255,255,.08);
+  border-radius:14px;padding:14px 16px;
+  text-align:left;font-size:14px;line-height:2;
+  margin:12px 0;
+}
+
+/* love box */
+.love-box{
+  background:rgba(255,100,150,.15);
+  border:1px solid rgba(255,100,150,.3);
+  border-radius:16px;padding:18px 16px;
+  margin:14px 0;font-size:15px;line-height:1.95;
+}
+
+/* floating particles */
+.fp{position:absolute;pointer-events:none;animation:fprise linear infinite;opacity:0;}
+@keyframes fprise{
+  0%{transform:translateY(110vh) rotate(0deg);opacity:0;}
+  8%{opacity:.8;}
+  90%{opacity:.4;}
+  100%{transform:translateY(-10vh) rotate(360deg);opacity:0;}
+}
+
+/* confetti */
+.cp{position:absolute;pointer-events:none;border-radius:3px;animation:cpfall linear infinite;}
+@keyframes cpfall{
+  0%{transform:translateY(-20px) rotate(0deg);opacity:1;}
+  100%{transform:translateY(110vh) rotate(720deg);opacity:.1;}
+}
+
+/* stars anim */
+.starp{position:absolute;background:#fff;border-radius:50%;pointer-events:none;animation:twinkle ease-in-out infinite;}
+</style>
+</head>
+<body>
+
+<!-- ═══════ PAGE 1 — CAKE ═══════ -->
+<div class="page active" id="p1">
+  <div id="starfield" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;"></div>
+  <canvas id="fireworkCanvas" style="position:fixed;inset:0;pointer-events:none;z-index:50;"></canvas>
+
+  <p class="p1title">নিশা, মোমবাতিতে ফু দাও!<br><span style="font-size:16px;opacity:.75;">নিচের বোতামে চাপো 💨</span></p>
+
+  <div class="cake-wrap" id="cakeWrap">
+    <!-- CANDLES (above layer 3) -->
+    <div class="candles-row" id="candlesRow">
+      <div class="candle" id="c1">
+        <div class="flame-wrap"><div class="smoke-line" id="s1"></div><div class="flame" id="f1"></div></div>
+        <div class="wick"></div>
+        <div class="c-body" style="background:linear-gradient(to right,#FF6BA8,#ffb3d1,#FF6BA8);"></div>
+        <div class="c-base"></div>
+      </div>
+      <div class="candle" id="c2">
+        <div class="flame-wrap"><div class="smoke-line" id="s2"></div><div class="flame" id="f2"></div></div>
+        <div class="wick"></div>
+        <div class="c-body" style="background:linear-gradient(to right,#FFD700,#fff176,#FFD700);"></div>
+        <div class="c-base"></div>
+      </div>
+      <div class="candle" id="c3">
+        <div class="flame-wrap"><div class="smoke-line" id="s3"></div><div class="flame" id="f3"></div></div>
+        <div class="wick"></div>
+        <div class="c-body" style="background:linear-gradient(to right,#c084fc,#e9d5ff,#c084fc);"></div>
+        <div class="c-base"></div>
+      </div>
+    </div>
+
+    <!-- LAYER 3 (top) -->
+    <div class="layer l3">
+      <div class="drip-row"><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div></div>
+      <div class="ldeco">🌸✨🌸</div>
+    </div>
+    <!-- LAYER 2 -->
+    <div class="layer l2" style="bottom:72px;">
+      <div class="drip-row"><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div></div>
+      <div class="ldeco">💕🎂💕</div>
+    </div>
+    <!-- LAYER 1 (bottom) -->
+    <div class="layer l1" style="bottom:14px;">
+      <div class="drip-row"><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div></div>
+      <div class="ldeco" style="font-size:14px;gap:4px;">🎀 <span style="font-weight:700;color:#fff;">NISHA</span> 🎀</div>
+    </div>
+    <!-- PLATE -->
+    <div class="plate"></div>
+  </div>
+
+  <button class="blow-btn" id="blowBtn" onclick="blowCandles()">💨 ফু দাও!</button>
+  <div class="blown-msg" id="blownMsg">🎉 মোমবাতি নিভে গেল!<br>শুভ জন্মদিন নিশা! 🎂</div>
+  <button class="nxt" id="nextP1" style="display:none;" onclick="goTo(1)">পরের পাতা →</button>
+</div>
+
+<!-- ═══════ PAGE 2 — BENGALI WISHES ═══════ -->
+<div class="page" id="p2">
+  <div id="confettiBox" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;"></div>
+  <div class="card">
+    <div class="card-icon">🎊🎉🎊</div>
+    <div class="card-title">শুভ জন্মদিন নিশা!</div>
+    <div class="card-body">
+
+      <span class="big-line">আজকের এই সোনালি দিনে,</span>
+
+      তোমাকে জানাই আমার <span class="hl">মন থেকে ভালোবাসা</span> ও আন্তরিক শুভেচ্ছা।
+      তুমি শুধু আমার বন্ধু নও —
+      তুমি আমার জীবনের একটা <span class="hl">অনমোল অধ্যায়।</span>
+
+      <br><br>
+
+      🌸 তোমার হাসি যেন সবসময় এভাবেই ফুটে থাকুক।<br>
+      💫 তোমার প্রতিটি স্বপ্ন যেন সত্যি হয়।<br>
+      🌟 তোমার জীবন যেন আলো আর আনন্দে ভরে যায়।<br>
+      💕 তুমি যেন সবসময় সুস্থ ও সুখী থাকো।<br>
+      🎯 তোমার প্রতিটি লক্ষ্য যেন পূরণ হয়।
+
+      <br><br>
+
+      <span class="big-line">জীবনের প্রতিটি মুহূর্ত যেন<br>তোমার কাছে উৎসবের মতো হয়!</span>
+
+      এই পৃথিবীতে তুমি জন্মেছো বলে<br>
+      আমার জীবনটা <span class="hl">অনেক বেশি সুন্দর।</span>
+
+      <br><br>
+
+      তোমাকে <span class="hl">অনেক অনেক অনেক ভালোবাসা</span> 💖<br>
+      <span style="font-size:13px;opacity:.7;">— তোমার বেস্ট ফ্রেন্ড</span>
+    </div>
+    <button class="nxt" style="width:100%;margin-top:16px;" onclick="goTo(2)">পরের পাতা →</button>
+  </div>
+</div>
+
+<!-- ═══════ PAGE 3 — FIRST MEET ═══════ -->
+<div class="page" id="p3">
+  <div id="starsP3" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;"></div>
+  <div class="card">
+    <div class="card-icon">🏫📝💫</div>
+    <div class="card-title">আমাদের প্রথম দেখা</div>
+    <div class="card-body">
+
+      <div class="mem-box">
+        <p style="color:#4fc3f7;font-weight:700;font-size:15px;margin-bottom:6px;">📍 আন্দুল কলেজ — পরীক্ষার হল</p>
+        সেই দিনের কথা আজও স্পষ্ট মনে আছে।
+        পরীক্ষার হলে সবাই চুপচাপ, টেনশনে ভরা মুখ —
+        হাতে কলম, চোখে প্রশ্নপত্র।
+        ঠিক সেই নীরব মুহূর্তে তোমার সাথে <span class="hl">প্রথম দেখা।</span>
+      </div>
+
+      কে জানত যে এই <span class="hl">পরীক্ষার হলের সাধারণ মুহূর্তটা</span><br>
+      একদিন এত বিশেষ হয়ে উঠবে?
+
+      <br><br>
+
+      সেদিন না জানি কত রোল নম্বর ছিল আশেপাশে,<br>
+      কিন্তু তোমার রোলটাই কেমন করে<br>
+      <span class="hl">মনের মধ্যে গেঁথে গেল।</span>
+
+      <br><br>
+
+      আন্দুল কলেজ আমার কাছে এখন<br>
+      শুধু একটা শিক্ষাপ্রতিষ্ঠান নয় —<br>
+      এটা সেই পবিত্র জায়গা<br>
+      যেখানে <span class="hl">তোমার সাথে পরিচয় হয়েছিল।</span> 💙
+
+      <br><br>
+      <span style="font-size:13px;opacity:.6;">সেদিনের সেই পরীক্ষার হলকে ধন্যবাদ! 😊</span>
+    </div>
+    <button class="nxt" style="width:100%;margin-top:16px;" onclick="goTo(3)">পরের পাতা →</button>
+  </div>
+</div>
+
+<!-- ═══════ PAGE 4 — CMA DREAM ═══════ -->
+<div class="page" id="p4">
+  <div class="card">
+    <div class="card-icon">🎯📊💼</div>
+    <div class="card-title">তোমার স্বপ্ন</div>
+    <div class="card-body">
+
+      <div class="cma-badge">C M A</div>
+      <p style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:14px;">Cost & Management Accountant</p>
+
+      নিশা, তুমি যে স্বপ্ন দেখো —<br>
+      সেটা শুধু একটা পরীক্ষা নয়,<br>
+      এটা তোমার <span class="hl">সাহস, অধ্যবসায় আর স্বপ্নের প্রতিচ্ছবি।</span>
+
+      <br><br>
+
+      <div class="dream-list">
+        📚 প্রতিটি রাত জেগে পড়া...<br>
+        🖊️ কঠিন অধ্যায়গুলো বারবার পড়া...<br>
+        💪 পরীক্ষার চাপ সামলে এগিয়ে যাওয়া...<br>
+        🔥 হাল না ছেড়ে লড়াই করে যাওয়া —<br>
+        <span class="hl">এই সবই তোমাকে CMA করে তুলবে।</span>
+      </div>
+
+      যারা <span class="hl">CMA-এর স্বপ্ন দেখার সাহস রাখে,</span><br>
+      তারা সাধারণ মানুষ নয়।<br>
+      তারা সেই বিশেষ মানুষ<br>
+      যারা নিজেদের সীমা নিজেরাই তৈরি করে।
+
+      <br><br>
+
+      <span style="display:block;font-size:18px;color:#7dffb3;font-weight:700;line-height:1.5;">
+        "পথ কঠিন হলেও তুমি কঠিন,<br>
+        স্বপ্ন বড় হলেও তুমি বড় —<br>
+        তুমি পারবেই, নিশা!" 🌟
+      </span>
+
+      <br>
+
+      তোমার CMA যাত্রায়<br>
+      <span class="hl">আমি সবসময় তোমার পাশে আছি।</span> 💚
+    </div>
+    <button class="nxt" style="width:100%;margin-top:16px;" onclick="goTo(4)">পরের পাতা →</button>
+  </div>
+</div>
+
+<!-- ═══════ PAGE 5 — LOVE ═══════ -->
+<div class="page" id="p5">
+  <div id="heartsBox" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;"></div>
+  <div class="card">
+    <div class="card-icon">💖💕💖</div>
+    <div class="card-title" style="color:#ffb3c6;">মনের কথা</div>
+    <div class="card-body">
+
+      নিশা,
+
+      <br><br>
+
+      কিছু কথা আছে যা মুখে বলা কঠিন।<br>
+      তাই আজ এই জন্মদিনে<br>
+      লিখে জানাচ্ছি।
+
+      <br><br>
+
+      <span class="big-line" style="color:#ffb3c6;">তুমি শুধু আমার বেস্ট ফ্রেন্ড নও,</span>
+
+      তুমি সেই মানুষ যে আমার প্রতিটি ভালো মুহূর্তের সাথী।<br>
+      তোমার হাসি দেখলে মনে হয়<br>
+      <span class="hl" style="color:#ffb3c6;">এই পৃথিবীটা আসলেই অনেক সুন্দর।</span>
+
+      <br><br>
+
+      <div class="love-box">
+        তোমার সাথে থেকে বুঝেছি —<br>
+        সত্যিকারের বন্ধুত্ব মানে<br>
+        <span class="hl" style="color:#ffb3c6;">একে অপরের স্বপ্নে বিশ্বাস রাখা,</span><br>
+        ভালো সময়ে হাসা,<br>
+        কঠিন সময়ে পাশে থাকা।<br><br>
+        তুমি আমার জীবনে ঠিক সেটাই।
+      </div>
+
+      <span style="display:block;font-size:20px;font-weight:700;color:#ffb3c6;margin:10px 0;">
+        তোমাকে ভালোবাসি নিশা, 💕<br>
+        আজকেও, কালকেও, সবসময়।
+      </span>
+
+      তোমার জীবন যেন <span class="hl" style="color:#ffb3c6;">সুখ আর ভালোবাসায় পূর্ণ থাকে।</span><br>
+      তুমি যেন সবসময় ভালো থাকো, সুস্থ থাকো।
+
+      <br><br>
+
+      <span style="font-size:22px;">— তোমার বেস্ট ফ্রেন্ড 💖</span>
+    </div>
+    <button class="nxt" style="width:100%;margin-top:16px;background:rgba(255,100,150,.2);border-color:rgba(255,100,150,.5);" onclick="goTo(0)">🔄 শুরু থেকে দেখো</button>
+  </div>
+</div>
+
+<!-- ── NAV DOTS ── -->
+<nav class="nav">
+  <div class="dot active" onclick="goTo(0)"></div>
+  <div class="dot" onclick="goTo(1)"></div>
+  <div class="dot" onclick="goTo(2)"></div>
+  <div class="dot" onclick="goTo(3)"></div>
+  <div class="dot" onclick="goTo(4)"></div>
+</nav>
+
+<script>
+// ── PAGE NAVIGATION ──
+const pages=document.querySelectorAll('.page');
+const dots=document.querySelectorAll('.dot');
+let cur=0;
+
+function goTo(n){
+  if(n===cur)return;
+  pages[cur].classList.remove('active');
+  pages[cur].classList.add('exit');
+  dots[cur].classList.remove('active');
+  setTimeout(()=>pages[cur].classList.remove('exit'),700);
+  cur=n;
+  pages[cur].classList.add('active');
+  dots[cur].classList.add('active');
+  // Scroll card to top
+  const card=pages[cur].querySelector('.card');
+  if(card)card.scrollTop=0;
+}
+
+// ── STARS (page 1) ──
+const sf=document.getElementById('starfield');
+for(let i=0;i<70;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  const sz=1+Math.random()*3;
+  s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;animation-delay:${Math.random()*4}s;animation-duration:${1.2+Math.random()*2.5}s;`;
+  sf.appendChild(s);
+}
+
+// Stars page 3
+const sp3=document.getElementById('starsP3');
+for(let i=0;i<50;i++){
+  const s=document.createElement('div');
+  s.className='starp';
+  const sz=1+Math.random()*2.5;
+  s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;animation-delay:${Math.random()*3}s;animation-duration:${1+Math.random()*2}s;`;
+  sp3.appendChild(s);
+}
+
+// ── CONFETTI (page 2) ──
+const cfColors=['#FF6BA8','#FFD700','#C084FC','#87CEEB','#98FB98','#FF85B3','#FFA07A'];
+const cfBox=document.getElementById('confettiBox');
+for(let i=0;i<55;i++){
+  const c=document.createElement('div');
+  c.className='cp';
+  c.style.cssText=`left:${Math.random()*100}%;top:-12px;width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;background:${cfColors[~~(Math.random()*cfColors.length)]};border-radius:${Math.random()>.5?'50%':'3px'};animation-duration:${3+Math.random()*5}s;animation-delay:${Math.random()*5}s;`;
+  cfBox.appendChild(c);
+}
+
+// ── HEARTS (page 5) ──
+const hb=document.getElementById('heartsBox');
+const he=['💕','💗','💓','💖','❤️','💝','🌸'];
+for(let i=0;i<22;i++){
+  const h=document.createElement('div');
+  h.className='fp';
+  h.textContent=he[~~(Math.random()*he.length)];
+  h.style.cssText=`left:${Math.random()*100}%;font-size:${14+Math.random()*18}px;animation-duration:${7+Math.random()*8}s;animation-delay:${Math.random()*7}s;`;
+  hb.appendChild(h);
+}
+
+// ── FIREWORKS CANVAS ──
+const fw=document.getElementById('fireworkCanvas');
+const fctx=fw.getContext('2d');
+function resizeCanvas(){fw.width=window.innerWidth;fw.height=window.innerHeight;}
+resizeCanvas();
+window.addEventListener('resize',resizeCanvas);
+
+let fparticles=[];
+function fireAt(x,y,col){
+  for(let i=0;i<32;i++){
+    const angle=Math.random()*Math.PI*2;
+    const spd=1.5+Math.random()*5;
+    fparticles.push({x,y,vx:Math.cos(angle)*spd,vy:Math.sin(angle)*spd,life:1,color:col,size:2+Math.random()*4});
+  }
+}
+const fwCols=['#FF6BA8','#FFD700','#C084FC','#87CEEB','#FF85B3','#FFA500','#fff'];
+function fwLoop(){
+  fctx.clearRect(0,0,fw.width,fw.height);
+  fparticles=fparticles.filter(p=>{
+    p.x+=p.vx;p.y+=p.vy;p.vy+=.09;p.life-=.017;p.vx*=.97;
+    fctx.globalAlpha=Math.max(0,p.life);
+    fctx.beginPath();fctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    fctx.fillStyle=p.color;fctx.fill();
+    return p.life>0;
+  });
+  fctx.globalAlpha=1;
+  requestAnimationFrame(fwLoop);
+}
+fwLoop();
+
+function launchFW(n=5){
+  for(let i=0;i<n;i++){
+    setTimeout(()=>fireAt(80+Math.random()*(innerWidth-160),40+Math.random()*(innerHeight*.55),fwCols[~~(Math.random()*fwCols.length)]),i*230);
+  }
+}
+
+// ── BLOW CANDLES ──
+let blown=false;
+function blowCandles(){
+  if(blown)return;
+  blown=true;
+  const btn=document.getElementById('blowBtn');
+  btn.disabled=true;
+
+  // Wobble effect before extinguish
+  const flames=[document.getElementById('f1'),document.getElementById('f2'),document.getElementById('f3')];
+  const smokes=[document.getElementById('s1'),document.getElementById('s2'),document.getElementById('s3')];
+
+  flames.forEach((f,i)=>{
+    setTimeout(()=>{
+      // quick flicker
+      f.style.animation='none';
+      f.style.transform='scaleX(0.3) rotate(30deg)';
+      setTimeout(()=>{
+        f.classList.add('out');
+        smokes[i].classList.add('puff');
+      },200);
+    },i*380);
+  });
+
+  setTimeout(()=>{
+    document.getElementById('blownMsg').classList.add('show');
+    document.getElementById('nextP1').style.display='inline-block';
+    launchFW(8);
+    // scatter confetti
+    for(let i=0;i<35;i++){
+      setTimeout(()=>{
+        const c=document.createElement('div');
+        c.className='cp';
+        c.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:-12px;width:${6+Math.random()*9}px;height:${6+Math.random()*9}px;background:${cfColors[~~(Math.random()*cfColors.length)]};border-radius:${Math.random()>.5?'50%':'3px'};animation:cpfall ${2.5+Math.random()*3}s linear forwards;pointer-events:none;z-index:60;`;
+        document.body.appendChild(c);
+        setTimeout(()=>c.remove(),6000);
+      },i*80);
+    }
+  },1600);
+}
+
+// auto fireworks on load
+setTimeout(()=>launchFW(4),1000);
+</script>
+</body>
+</html>
